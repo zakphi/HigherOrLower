@@ -6,9 +6,10 @@ $(function(){
     this.faceVal = faceVal
     this.numVal = numVal
   }
+
+  let $deck = []
   
   function createDeck(){
-    let $deck = []
     /*
       u2660 = spade
       u2665 = heart
@@ -24,5 +25,18 @@ $(function(){
       })
     })
   }
+
+  function shuffleDeck(){
+    for( let $i = 0; $i < 500; $i++){
+      let $loc1 = Math.floor(Math.random() * $deck.length)
+      let $loc2 = Math.floor(Math.random() * $deck.length)
+      let $tmp = $deck[$loc1]
+
+      $deck[$loc1] = $deck[$loc2]
+      $deck[$loc2] = $tmp
+    }
+  }
+
   createDeck()
+  shuffleDeck()
 })
