@@ -22,13 +22,12 @@ $(function(){
       $faceValues.forEach(function(faceVal, numVal){
         let $card = new Card(suit, faceVal, numVal + 1)
         $deck.push($card)
-        console.log($card)
       })
     })
   }
 
   function shuffleDeck(){
-    for( let $i = 0; $i < 500; $i++){
+    for(let $i = 0; $i < 500; $i++){
       let $loc1 = Math.floor(Math.random() * $deck.length)
       let $loc2 = Math.floor(Math.random() * $deck.length)
       let $tmpLoc = $deck[$loc1]
