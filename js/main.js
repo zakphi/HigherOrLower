@@ -9,6 +9,8 @@ $(function(){
 
   let $deck = []
 
+  let $score = 0;
+
   function createGame(){
     let $gameCont = $('<section>')
     $gameCont.attr('id','container')
@@ -38,6 +40,31 @@ $(function(){
     $startScreen.appendTo('#container')
     $startBtn.appendTo($startScreen)
     $helpBtn.appendTo($startScreen)
+
+    $startBtn.click(createGameScreen)
+  }
+
+  function createGameScreen(){
+    console.log('game screen created')
+
+    $('#start-screen').remove()
+
+    let $gameScreen = $('<article>')
+    $gameScreen.attr('id','game-screen')
+
+    let $scoreKeeper = $('<h2>')
+    $scoreKeeper.html(`Score: ${$score}`)
+
+    let $card1Cont = $('<div>')
+    $card1Cont.attr('id','card1')
+
+    let $card2Cont = $('<div>')
+    $card2Cont.attr('id','card2')
+
+    $gameScreen.appendTo('#container')
+    $scoreKeeper.appendTo($gameScreen)
+    $card1Cont.appendTo($gameScreen)
+    $card2Cont.appendTo($gameScreen)
   }
   
   function createDeck(){
