@@ -8,6 +8,27 @@ $(function(){
   }
 
   let $deck = []
+
+  function createStartScreen(){
+    let $gameCont = $('<div>')
+    $gameCont.attr('id','container')
+    
+    let $title = $('<h1>')
+    $title.text('Higher or Lower')
+
+    let $startBtn = $('<button>')
+    $startBtn.attr('id','start')
+    $startBtn.html('start')
+    
+    let $helpBtn = $('<button>')
+    $helpBtn.attr('id','start')
+    $helpBtn.html('help')
+    
+    $title.appendTo($gameCont)
+    $startBtn.appendTo($gameCont)
+    $helpBtn.appendTo($gameCont)
+    $gameCont.appendTo('body')
+  }
   
   function createDeck(){
     /*
@@ -42,6 +63,7 @@ $(function(){
     let $card2 = $deck.shift()
   }
 
+  createStartScreen()
   createDeck()
   shuffleDeck()
   showCard()
