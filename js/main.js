@@ -30,13 +30,19 @@ $(function(){
     for( let $i = 0; $i < 500; $i++){
       let $loc1 = Math.floor(Math.random() * $deck.length)
       let $loc2 = Math.floor(Math.random() * $deck.length)
-      let $tmp = $deck[$loc1]
+      let $tmpLoc = $deck[$loc1]
 
       $deck[$loc1] = $deck[$loc2]
-      $deck[$loc2] = $tmp
+      $deck[$loc2] = $tmpLoc
     }
+  }
+
+  function showCard(){
+    let $card1 = $deck.shift()
+    let $card2 = $deck.shift()
   }
 
   createDeck()
   shuffleDeck()
+  showCard()
 })
