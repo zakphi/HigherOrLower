@@ -19,9 +19,10 @@ $(function(){
     let $suits = ['\u2660','\u2665','\u2666','\u2663']
     let $faceValues = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
     $suits.forEach(function(suit){
-      $faceValues.forEach(function(numVal, i){
-        let $card = new Card(suit, numVal, i+1)
+      $faceValues.forEach(function(faceVal, numVal){
+        let $card = new Card(suit, faceVal, numVal + 1)
         $deck.push($card)
+        console.log($card)
       })
     })
   }
