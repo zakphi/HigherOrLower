@@ -42,12 +42,14 @@ $(function(){
     $helpBtn.appendTo($startScreen)
 
     $startBtn.click(createGameScreen)
+    $helpBtn.one('click', createHelpScreen)
   }
 
   function createGameScreen(){
     console.log('game screen created')
 
     $('#start-screen').remove()
+    $('#help-screen').remove()
 
     let $gameScreen = $('<article>')
     $gameScreen.attr('id','game-screen')
@@ -65,6 +67,23 @@ $(function(){
     $scoreKeeper.appendTo($gameScreen)
     $card1Cont.appendTo($gameScreen)
     $card2Cont.appendTo($gameScreen)
+  }
+
+  function createHelpScreen(){
+    console.log('help screen created')
+
+    let $helpScreen = $('<article>')
+    $helpScreen.attr('id','help-screen')
+
+    let $helpTitle = $('<h2>')
+    $helpTitle.text('How To Play')
+
+    let $helpText = $('<p>')
+    $helpText.text('You are displayed a card. You then guess whether the next card is higher or lower. To guess, click on either the higher or lower button.')
+
+    $helpScreen.appendTo('#container')
+    $helpTitle.appendTo($helpScreen)
+    $helpText.appendTo($helpScreen)
   }
   
   function createDeck(){
