@@ -42,6 +42,13 @@ Higher or Lower is a simple card game where the user is displayed a card and has
         * keep track of score
         * user continues to play
       * user guesses wrong and game ends
+  * Build out game in HTML using jQuery
+    * create start screen
+    * create instructions
+    * create the cards
+    * create board
+    * create score holder
+    * create end game screen
   ### Phase 3
   * make game look pretty
   * add any fancy features
