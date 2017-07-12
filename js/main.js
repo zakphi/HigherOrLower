@@ -31,11 +31,11 @@ $(function(){
 
     let $startBtn = $('<button>')
     $startBtn.attr('id','start')
-    $startBtn.html('start')
+    $startBtn.text('start')
     
     let $helpBtn = $('<button>')
     $helpBtn.attr('id','start')
-    $helpBtn.html('help')
+    $helpBtn.text('help')
     
     $startScreen.appendTo('#container')
     $startBtn.appendTo($startScreen)
@@ -53,7 +53,7 @@ $(function(){
     $gameScreen.attr('id','game-screen')
 
     let $scoreKeeper = $('<h2>')
-    $scoreKeeper.html(`Score: ${$score}`)
+    $scoreKeeper.text(`Score: ${$score}`)
 
     let $card1Cont = $('<div>')
     $card1Cont.attr('id','card1')
