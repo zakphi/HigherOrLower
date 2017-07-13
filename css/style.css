@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'DOS';
+  src:  url('fonts/VT323.ttf') format('truetype'),
+        url('fonts/VT323.ttf') format('truetype');
+}
+
+body, button{
+  font-family: 'VT323', 'DOS', monospace;
+}
