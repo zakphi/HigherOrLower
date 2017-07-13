@@ -88,7 +88,7 @@ $(function(){
 
     $gameScreen.appendTo('#container')
     $scoreKeeper.appendTo($gameScreen)
-    if($highScore !== null){
+    if($highScore !== null && $highScore > 0){
       $highScoreKeeper.appendTo($gameScreen)
     }
     $card1Cont.appendTo($gameScreen)
@@ -182,8 +182,10 @@ $(function(){
       showCard()
     } else if($card2NumVal === $card1NumVal){
       updateHighScore()
+      createEndGameScreen()
     } else {
       updateHighScore()
+      createEndGameScreen()
     }
   }
 
@@ -194,8 +196,10 @@ $(function(){
       showCard()
     } else if($card2NumVal === $card1NumVal){
       updateHighScore()
+      createEndGameScreen()
     } else {
       updateHighScore()
+      createEndGameScreen()
     }
   }
 
@@ -207,9 +211,33 @@ $(function(){
 
   function updateHighScore(){
     console.log('high score updated')
-    if($score > $highScore){
+    if($score > $highScore || $score === 0){
       localStorage.setItem('high-score', $score)
     }
+  }
+
+  function createEndGameScreen(){
+    $('#game-screen').remove()
+
+    let $endGameScreen = $('<article>')
+    $endGameScreen.attr('id','end-game-screen')
+
+    let $scoreKeeper = $('<h2>')
+    $scoreKeeper.text(`Score: ${$score}`)
+    $scoreKeeper.addClass('score')
+
+    let $highScoreKeeper = $('<h2>')
+    $highScoreKeeper.text(`High Score: ${$highScore}`)
+    $highScoreKeeper.addClass('high-score')
+
+    $endGameScreen.appendTo('#container')
+    $scoreKeeper.appendTo($endGameScreen)
+    if($score > 0){
+      $highScoreKeeper.text(`High Score: ${$score}`)
+    } else if($score === 0) {
+      $highScoreKeeper.text(`High Score: ${$score}`)
+    }
+    $highScoreKeeper.appendTo($endGameScreen)
   }
 
   createGame()
