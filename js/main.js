@@ -211,7 +211,7 @@ $(function(){
 
   function updateHighScore(){
     console.log('high score updated')
-    if($score > $highScore || $score === 0){
+    if($score > $highScore){
       localStorage.setItem('high-score', $score)
     }
   }
@@ -247,10 +247,10 @@ $(function(){
 
     $endGameScreen.appendTo('#container')
     $scoreKeeper.appendTo($endGameScreen)
-    if($score > 0){
+    if($score > 0 && $score > $highScore){
       $highScoreKeeper.text(`High Score: ${$score}`)
-    } else if($score === 0) {
-      $highScoreKeeper.text(`High Score: ${$score}`)
+    } else if($score === 0 && $score < $highScore) {
+      $highScoreKeeper.text(`High Score: ${$highScore}`)
     }
     $highScoreKeeper.appendTo($endGameScreen)
   }
