@@ -179,7 +179,7 @@ $(function(){
     console.log('higher')
     if($card2NumVal > $card1NumVal){
       updateScore()
-      showCard()
+      updateCards()
     } else if($card2NumVal === $card1NumVal){
       updateHighScore()
       createEndGameScreen()
@@ -193,7 +193,7 @@ $(function(){
     console.log('lower')
     if($card2NumVal < $card1NumVal){
       updateScore()
-      showCard()
+      updateCards()
     } else if($card2NumVal === $card1NumVal){
       updateHighScore()
       createEndGameScreen()
@@ -214,6 +214,21 @@ $(function(){
     if($score > $highScore || $score === 0){
       localStorage.setItem('high-score', $score)
     }
+  }
+
+  function updateCards(){
+    console.log('cards updated')
+    $('#card1').html($('#card2').html())
+    $card1NumVal = $card2NumVal
+
+    let $card2 = $deck.shift()
+    
+    let $card2Face = $card2.faceVal
+    let $card2Suit = $card2.suit
+    $card2NumVal = $card2.numVal
+
+    $('#card2 .faceValCont').text($card2Face)
+    $('#card2 .suitCont').text($card2Suit)
   }
 
   function createEndGameScreen(){
