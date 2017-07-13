@@ -69,12 +69,22 @@ $(function(){
     let $suitCont = $('<div>')
     $suitCont.addClass('suitCont')
 
+    let $higherBtn = $('<button>')
+    $higherBtn.attr('id','higherBtn')
+    $higherBtn.text('higher')
+
+    let $lowerBtn = $('<button>')
+    $lowerBtn.attr('id','higherBtn')
+    $lowerBtn.text('lower')
+
     $gameScreen.appendTo('#container')
     $scoreKeeper.appendTo($gameScreen)
     $card1Cont.appendTo($gameScreen)
     $card2Cont.appendTo($gameScreen)
     $faceValCont.appendTo($card1Cont)
     $suitCont.appendTo($card1Cont)
+    $higherBtn.appendTo($gameScreen)
+    $lowerBtn.appendTo($gameScreen)
 
     createDeck()
     shuffleDeck()
