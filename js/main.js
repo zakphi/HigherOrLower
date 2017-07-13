@@ -91,8 +91,8 @@ $(function(){
     $higherBtn.appendTo($gameScreen)
     $lowerBtn.appendTo($gameScreen)
 
-    $higherBtn.click(higherOrLower)
-    $lowerBtn.click(higherOrLower)
+    $higherBtn.click(higher)
+    $lowerBtn.click(lower)
 
     createDeck()
     shuffleDeck()
@@ -166,15 +166,26 @@ $(function(){
     $('#card2 .suitCont').text($card2Suit)
   }
 
-  function higherOrLower(){
-    console.log('higher or lower check')
+  function higher(){
+    console.log('higher')
     if($card2NumVal > $card1NumVal){
       console.log('card 2 is higher')
       $score++
       $('#game-screen h2').text(`Score: ${$score}`)
       showCard()
       console.log(`score: ${$score}`)
-    } else if($card2NumVal < $card1NumVal){
+    } else if($card2NumVal === $card1NumVal){
+      console.log('cards are the same')
+      console.log('you lose')
+    } else {
+      console.log('you guessed wrong')
+      console.log('you lose')
+    }
+  }
+
+  function lower(){
+    console.log('lower')
+    if($card2NumVal < $card1NumVal){
       console.log('card 2 is lower')
       $score++
       $('#game-screen h2').text(`Score: ${$score}`)
@@ -182,6 +193,9 @@ $(function(){
       console.log(`score: ${$score}`)
     } else if($card2NumVal === $card1NumVal){
       console.log('cards are the same')
+      console.log('you lose')
+    } else {
+      console.log('you guessed wrong')
       console.log('you lose')
     }
   }
