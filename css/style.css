@@ -9,3 +9,12 @@ body, button{
   background-color: #000000;
   color: #808080;
 }
+
+button{
+  border: 1px solid #808080;
+  margin-right: 5px;
+  background-color: transparent;
+}
+button:focus{
+  outline: none;
+}
