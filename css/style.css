@@ -6,4 +6,6 @@
 
 body, button{
   font-family: 'VT323', 'DOS', monospace;
+  background-color: #000000;
+  color: #808080;
 }
