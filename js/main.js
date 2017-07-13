@@ -39,14 +39,14 @@ $(function(){
     
     let $helpBtn = $('<button>')
     $helpBtn.attr('id','start')
-    $helpBtn.text('help')
+    $helpBtn.text('instructions')
     
     $startScreen.appendTo('#container')
     $startBtn.appendTo($startScreen)
     $helpBtn.appendTo($startScreen)
-
-    $startBtn.click(createGameScreen)
-    $helpBtn.one('click', createHelpScreen)
+    
+    $(document).keyup(hitEnter)
+    $(document).keyup(hitH)
   }
 
   function createGameScreen(){
@@ -100,8 +100,14 @@ $(function(){
     $higherBtn.appendTo($gameScreen)
     $lowerBtn.appendTo($gameScreen)
 
-    $higherBtn.click(higher)
-    $lowerBtn.click(lower)
+    $(document).keyup(function game(e){
+      if(e.key === 'h'){
+        higher()
+      }
+      if(e.key === 'l'){
+        lower()
+      }
+    })
 
     createDeck()
     shuffleDeck()
@@ -253,6 +259,20 @@ $(function(){
       $highScoreKeeper.text(`High Score: ${$highScore}`)
     }
     $highScoreKeeper.appendTo($endGameScreen)
+  }
+
+  function hitEnter(e){
+    if(e.keyCode === 13){
+      createGameScreen()
+      $(this).unbind(e)
+    }
+  }
+
+  function hitH(e){
+    if(e.key === 'i'){
+      createHelpScreen()
+      $(this).unbind(e)
+    }
   }
 
   createGame()
