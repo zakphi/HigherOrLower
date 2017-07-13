@@ -9,7 +9,10 @@ $(function(){
 
   let $deck = []
 
-  let $score = 0;
+  let $score = 0
+
+  let $card1NumVal
+  let $card2NumVal
 
   function createGame(){
     let $gameCont = $('<section>')
@@ -83,8 +86,13 @@ $(function(){
     $card2Cont.appendTo($gameScreen)
     $faceValCont.appendTo($card1Cont)
     $suitCont.appendTo($card1Cont)
+    $faceValCont.clone().appendTo($card2Cont)
+    $suitCont.clone().appendTo($card2Cont)
     $higherBtn.appendTo($gameScreen)
     $lowerBtn.appendTo($gameScreen)
+
+    $higherBtn.click(higherOrLower)
+    $lowerBtn.click(higherOrLower)
 
     createDeck()
     shuffleDeck()
@@ -145,11 +153,35 @@ $(function(){
 
     let $card1Face = $card1.faceVal
     let $card1Suit = $card1.suit
-    console.log($card1Face)
-    console.log($card1Suit)
+    $card1NumVal = $card1.numVal
+
+    let $card2Face = $card2.faceVal
+    let $card2Suit = $card2.suit
+    $card2NumVal = $card2.numVal
 
     $('#card1 .faceValCont').text($card1Face)
     $('#card1 .suitCont').text($card1Suit)
+
+    $('#card2 .faceValCont').text($card2Face)
+    $('#card2 .suitCont').text($card2Suit)
+  }
+
+  function higherOrLower(){
+    console.log('higher or lower check')
+    if($card2NumVal > $card1NumVal){
+      console.log('card 2 is higher')
+      $score++
+      $('#game-screen h2').text(`Score: ${$score}`)
+      console.log(`score: ${$score}`)
+    } else if($card2NumVal < $card1NumVal){
+      console.log('card 2 is lower')
+      $score++
+      $('#game-screen h2').text(`Score: ${$score}`)
+      console.log(`score: ${$score}`)
+    } else if($card2NumVal === $card1NumVal){
+      console.log('cards are the same')
+      console.log('you lose')
+    }
   }
 
   createGame()
