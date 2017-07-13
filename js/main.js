@@ -63,10 +63,22 @@ $(function(){
     let $card2Cont = $('<div>')
     $card2Cont.attr('id','card2')
 
+    let $faceValCont = $('<div>')
+    $faceValCont.addClass('faceValCont')
+
+    let $suitCont = $('<div>')
+    $suitCont.addClass('suitCont')
+
     $gameScreen.appendTo('#container')
     $scoreKeeper.appendTo($gameScreen)
     $card1Cont.appendTo($gameScreen)
     $card2Cont.appendTo($gameScreen)
+    $faceValCont.appendTo($card1Cont)
+    $suitCont.appendTo($card1Cont)
+
+    createDeck()
+    shuffleDeck()
+    showCard()
   }
 
   function createHelpScreen(){
@@ -87,6 +99,7 @@ $(function(){
   }
   
   function createDeck(){
+    console.log('deck created')
     /*
       u2660 = spade
       u2665 = heart
@@ -104,6 +117,7 @@ $(function(){
   }
 
   function shuffleDeck(){
+    console.log('deck shuffled')
     for(let $i = 0; $i < 500; $i++){
       let $loc1 = Math.floor(Math.random() * $deck.length)
       let $loc2 = Math.floor(Math.random() * $deck.length)
@@ -115,13 +129,19 @@ $(function(){
   }
 
   function showCard(){
+    console.log('card displayed')
     let $card1 = $deck.shift()
     let $card2 = $deck.shift()
+
+    let $card1Face = $card1.faceVal
+    let $card1Suit = $card1.suit
+    console.log($card1Face)
+    console.log($card1Suit)
+
+    $('#card1 .faceValCont').text($card1Face)
+    $('#card1 .suitCont').text($card1Suit)
   }
 
   createGame()
   createStartScreen()
-  createDeck()
-  shuffleDeck()
-  showCard()
 })
