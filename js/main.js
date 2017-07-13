@@ -10,6 +10,7 @@ $(function(){
   let $deck = []
 
   let $score = 0
+  let $highScore = localStorage.getItem('high-score')
 
   let $card1NumVal
   let $card2NumVal
@@ -59,6 +60,11 @@ $(function(){
 
     let $scoreKeeper = $('<h2>')
     $scoreKeeper.text(`Score: ${$score}`)
+    $scoreKeeper.addClass('score')
+
+    let $highScoreKeeper = $('<h2>')
+    $highScoreKeeper.text(`High Score: ${$highScore}`)
+    $highScoreKeeper.addClass('high-score')
 
     let $card1Cont = $('<div>')
     $card1Cont.attr('id','card1')
@@ -82,6 +88,9 @@ $(function(){
 
     $gameScreen.appendTo('#container')
     $scoreKeeper.appendTo($gameScreen)
+    if($highScore !== null){
+      $highScoreKeeper.appendTo($gameScreen)
+    }
     $card1Cont.appendTo($gameScreen)
     $card2Cont.appendTo($gameScreen)
     $faceValCont.appendTo($card1Cont)
@@ -169,34 +178,37 @@ $(function(){
   function higher(){
     console.log('higher')
     if($card2NumVal > $card1NumVal){
-      console.log('card 2 is higher')
-      $score++
-      $('#game-screen h2').text(`Score: ${$score}`)
+      updateScore()
       showCard()
-      console.log(`score: ${$score}`)
     } else if($card2NumVal === $card1NumVal){
-      console.log('cards are the same')
-      console.log('you lose')
+      updateHighScore()
     } else {
-      console.log('you guessed wrong')
-      console.log('you lose')
+      updateHighScore()
     }
   }
 
   function lower(){
     console.log('lower')
     if($card2NumVal < $card1NumVal){
-      console.log('card 2 is lower')
-      $score++
-      $('#game-screen h2').text(`Score: ${$score}`)
+      updateScore()
       showCard()
-      console.log(`score: ${$score}`)
     } else if($card2NumVal === $card1NumVal){
-      console.log('cards are the same')
-      console.log('you lose')
+      updateHighScore()
     } else {
-      console.log('you guessed wrong')
-      console.log('you lose')
+      updateHighScore()
+    }
+  }
+
+  function updateScore(){
+    console.log('score updated')
+    $score++
+    $('.score').text(`Score: ${$score}`)
+  }
+
+  function updateHighScore(){
+    console.log('high score updated')
+    if($score > $highScore){
+      localStorage.setItem('high-score', $score)
     }
   }
 
