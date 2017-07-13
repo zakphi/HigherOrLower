@@ -172,11 +172,13 @@ $(function(){
       console.log('card 2 is higher')
       $score++
       $('#game-screen h2').text(`Score: ${$score}`)
+      showCard()
       console.log(`score: ${$score}`)
     } else if($card2NumVal < $card1NumVal){
       console.log('card 2 is lower')
       $score++
       $('#game-screen h2').text(`Score: ${$score}`)
+      showCard()
       console.log(`score: ${$score}`)
     } else if($card2NumVal === $card1NumVal){
       console.log('cards are the same')
