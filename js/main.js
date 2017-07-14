@@ -26,6 +26,7 @@ $(function(){
 
     let $input = $('<input>')
     $input.attr('type','text')
+    $input.prop('autofocus',true)
 
     $input.keyup(function(){
       console.log($input.val())
@@ -43,6 +44,7 @@ $(function(){
     $title.appendTo($header)
     $gameCont.appendTo('body')
     $input.appendTo('body')
+    $input.before('C:\\>')
   }
 
   function createStartScreen(){

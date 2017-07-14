@@ -4,17 +4,18 @@
         url('fonts/VT323.ttf') format('truetype');
 }
 
-body, button{
+body{
   font-family: 'VT323', 'DOS', monospace;
   background-color: #000000;
   color: #808080;
 }
 
-button{
-  border: 1px solid #808080;
-  margin-right: 5px;
+input{
   background-color: transparent;
+  border: none;
+  color: #808080;
+  font-family: 'VT323', 'DOS', monospace;
 }
-button:focus{
+input:focus{
   outline: none;
 }
