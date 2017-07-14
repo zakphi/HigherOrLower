@@ -30,20 +30,17 @@ $(function(){
 
     $input.keyup(function(e){
       console.log($input.val())
-      if(e.keyCode === 13){
-        if($input.val() === 'start'){
-          let $gameScreenCount = $('#container #game-screen').length
-          console.log($gameScreenCount)
-          if($gameScreenCount === 0){
-            createGameScreen()
+      if($('#container #start-screen').length === 1){
+        if(e.keyCode === 13){
+          if($input.val() === 'start'){
+            if($('#container #game-screen').length === 0){
+              createGameScreen()
+            }
           }
-        $input.val('')
-        }
-        if($input.val() === 'help'){
-          let $helpScreenCount = $('#container #help-screen').length
-          console.log($helpScreenCount)
-          if($helpScreenCount === 0){
-            createHelpScreen()
+          if($input.val() === 'help'){
+            if($('#container #help-screen').length === 0){
+              createHelpScreen()
+            }
           }
           $input.val('')
         }
@@ -116,13 +113,14 @@ $(function(){
 
     $('input').keyup(function(e){
       console.log($('input').val())
-      if(e.keyCode === 13){
-        if($('input').val() === 'higher'){
-          higher()
-          $('input').val('')
-        }
-        if($('input').val() === 'lower'){
-          lower()
+      if($('#container #game-screen').length === 1){
+        if(e.keyCode === 13){
+          if($('input').val() === 'higher'){
+            higher()
+          }
+          if($('input').val() === 'lower'){
+            lower()
+          }
           $('input').val('')
         }
       }
@@ -278,6 +276,22 @@ $(function(){
       $highScoreKeeper.text(`High Score: ${$highScore}`)
     }
     $highScoreKeeper.appendTo($endGameScreen)
+
+    $('input').keyup(function(e){
+      console.log($('input').val())
+      if(e.keyCode === 13){
+        if($('input').val() === 'replay'){
+          replayGame()
+          $('input').val('')
+        }
+      }
+    })
+  }
+
+  function replayGame(){
+    $('#end-game-screen').remove()
+    $score = 0
+    createGameScreen()
   }
 
   createGame()
