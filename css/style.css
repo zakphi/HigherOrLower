@@ -8,6 +8,7 @@ body{
   font-family: 'VT323', 'DOS', monospace;
   background-color: #000000;
   color: #808080;
+  font-size: 2em;
 }
 
 input{
@@ -15,6 +16,7 @@ input{
   border: none;
   color: #808080;
   font-family: 'VT323', 'DOS', monospace;
+  font-size: 1em;
 }
 input:focus{
   outline: none;

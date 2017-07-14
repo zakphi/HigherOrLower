@@ -92,14 +92,6 @@ $(function(){
     let $suitCont = $('<div>')
     $suitCont.addClass('suitCont')
 
-    let $higherBtn = $('<button>')
-    $higherBtn.attr('id','higherBtn')
-    $higherBtn.text('higher')
-
-    let $lowerBtn = $('<button>')
-    $lowerBtn.attr('id','higherBtn')
-    $lowerBtn.text('lower')
-
     $gameScreen.appendTo('#container')
     $scoreKeeper.appendTo($gameScreen)
     if($highScore !== null && $highScore > 0){
@@ -111,8 +103,6 @@ $(function(){
     $suitCont.appendTo($card1Cont)
     $faceValCont.clone().appendTo($card2Cont)
     $suitCont.clone().appendTo($card2Cont)
-    $higherBtn.appendTo($gameScreen)
-    $lowerBtn.appendTo($gameScreen)
 
     $('input').keyup(function(){
       console.log($('input').val())
