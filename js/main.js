@@ -24,29 +24,41 @@ $(function(){
     let $title = $('<h1>')
     $title.text('Higher or Lower')
 
+    let $input = $('<input>')
+    $input.attr('type','text')
+
+    $input.keyup(function(){
+      console.log($input.val())
+      if($input.val() === 'start'){
+        createGameScreen()
+        $input.val('')
+      }
+      if($input.val() === 'help'){
+        createHelpScreen()
+        $input.val('')
+      }
+    })
+
     $header.appendTo('body')
     $title.appendTo($header)
     $gameCont.appendTo('body')
+    $input.appendTo('body')
   }
 
   function createStartScreen(){
     let $startScreen = $('<article>')
     $startScreen.attr('id','start-screen')
-
-    let $startBtn = $('<button>')
-    $startBtn.attr('id','start')
-    $startBtn.text('start')
-    
-    let $helpBtn = $('<button>')
-    $helpBtn.attr('id','start')
-    $helpBtn.text('instructions')
     
     $startScreen.appendTo('#container')
-    $startBtn.appendTo($startScreen)
-    $helpBtn.appendTo($startScreen)
-    
-    $(document).keyup(hitEnter)
-    $(document).keyup(hitH)
+
+    let $startText = $('<p>')
+    $startText.text('Type \'start\' to play the game')
+
+    let $helpText = $('<p>')
+    $helpText.text('Type \'help\' to display instructions')
+
+    $startText.appendTo($startScreen)
+    $helpText.appendTo($startScreen)
   }
 
   function createGameScreen(){
@@ -100,12 +112,15 @@ $(function(){
     $higherBtn.appendTo($gameScreen)
     $lowerBtn.appendTo($gameScreen)
 
-    $(document).keyup(function game(e){
-      if(e.key === 'h'){
+    $('input').keyup(function(){
+      console.log($('input').val())
+      if($('input').val() === 'higher'){
         higher()
+        $('input').val('')
       }
-      if(e.key === 'l'){
+      if($('input').val() === 'lower'){
         lower()
+        $('input').val('')
       }
     })
 
@@ -259,20 +274,6 @@ $(function(){
       $highScoreKeeper.text(`High Score: ${$highScore}`)
     }
     $highScoreKeeper.appendTo($endGameScreen)
-  }
-
-  function hitEnter(e){
-    if(e.keyCode === 13){
-      createGameScreen()
-      $(this).unbind(e)
-    }
-  }
-
-  function hitH(e){
-    if(e.key === 'i'){
-      createHelpScreen()
-      $(this).unbind(e)
-    }
   }
 
   createGame()
