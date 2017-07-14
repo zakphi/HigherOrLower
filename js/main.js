@@ -268,6 +268,12 @@ $(function(){
     $highScoreKeeper.text(`High Score: ${$highScore}`)
     $highScoreKeeper.addClass('high-score')
 
+    let $result = $('<h2>')
+    $result.text('you guessed wrong!')
+
+    let $endGameInstructions = $('<p>')
+    $endGameInstructions.text('type \'replay\' to replay again.')
+
     $endGameScreen.appendTo('#container')
     $scoreKeeper.appendTo($endGameScreen)
     if($score > 0 && $score > $highScore){
@@ -276,6 +282,8 @@ $(function(){
       $highScoreKeeper.text(`High Score: ${$highScore}`)
     }
     $highScoreKeeper.appendTo($endGameScreen)
+    $result.appendTo($endGameScreen)
+    $endGameInstructions.appendTo($endGameScreen)
 
     $('input').keyup(function(e){
       console.log($('input').val())
