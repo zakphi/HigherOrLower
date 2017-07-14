@@ -32,11 +32,19 @@ $(function(){
       console.log($input.val())
       if(e.keyCode === 13){
         if($input.val() === 'start'){
-        createGameScreen()
+          let $gameScreenCount = $('#container #game-screen').length
+          console.log($gameScreenCount)
+          if($gameScreenCount === 0){
+            createGameScreen()
+          }
         $input.val('')
         }
         if($input.val() === 'help'){
-          createHelpScreen()
+          let $helpScreenCount = $('#container #help-screen').length
+          console.log($helpScreenCount)
+          if($helpScreenCount === 0){
+            createHelpScreen()
+          }
           $input.val('')
         }
       }
