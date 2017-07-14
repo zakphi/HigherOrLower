@@ -28,15 +28,17 @@ $(function(){
     $input.attr('type','text')
     $input.prop('autofocus',true)
 
-    $input.keyup(function(){
+    $input.keyup(function(e){
       console.log($input.val())
-      if($input.val() === 'start'){
+      if(e.keyCode === 13){
+        if($input.val() === 'start'){
         createGameScreen()
         $input.val('')
-      }
-      if($input.val() === 'help'){
-        createHelpScreen()
-        $input.val('')
+        }
+        if($input.val() === 'help'){
+          createHelpScreen()
+          $input.val('')
+        }
       }
     })
 
@@ -104,15 +106,17 @@ $(function(){
     $faceValCont.clone().appendTo($card2Cont)
     $suitCont.clone().appendTo($card2Cont)
 
-    $('input').keyup(function(){
+    $('input').keyup(function(e){
       console.log($('input').val())
-      if($('input').val() === 'higher'){
-        higher()
-        $('input').val('')
-      }
-      if($('input').val() === 'lower'){
-        lower()
-        $('input').val('')
+      if(e.keyCode === 13){
+        if($('input').val() === 'higher'){
+          higher()
+          $('input').val('')
+        }
+        if($('input').val() === 'lower'){
+          lower()
+          $('input').val('')
+        }
       }
     })
 
