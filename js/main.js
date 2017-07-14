@@ -131,7 +131,7 @@ $(function(){
     $helpTitle.text('How To Play')
 
     let $helpText = $('<p>')
-    $helpText.text('You are displayed a card. You then guess whether the next card is higher or lower. To guess, click on either the higher or lower button.')
+    $helpText.text('The player is displayed a card. The player then has to guess whether the next card is higher or lower than the displayed card. To guess, type \'higher\' for higher or \'lower\' for lower.')
 
     $helpScreen.appendTo('#container')
     $helpTitle.appendTo($helpScreen)
