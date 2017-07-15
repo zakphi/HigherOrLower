@@ -1,9 +1,9 @@
 # Higher or Lower
 
-![start screen](startscreen.png)
-![help screen](helptextdisplayed.png)
-![game screen](gamescreen.png)
-![end game screen](endgamescreen.png)
+![start screen](images/startscreen.png)
+![help screen](images/helptextdisplayed.png)
+![game screen](images/gamescreen.png)
+![end game screen](images/endgamescreen.png)
 
 ## What is Higher or Lower?
 

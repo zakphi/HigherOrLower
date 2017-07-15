@@ -8,7 +8,7 @@ Higher or Lower is a simple card game where the user is displayed a card and has
 
 ## Wireframe
 
-![wireframe](wireframe.jpg)
+![wireframe](images/wireframe.jpg)
 
 ## Initial thoughts on game structure
 
