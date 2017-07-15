@@ -168,13 +168,13 @@ $(function(){
 
   function shuffleDeck(){
     console.log('deck shuffled')
-    for(let $i = 0; $i < 500; $i++){
-      let $loc1 = Math.floor(Math.random() * deck.length)
-      let $loc2 = Math.floor(Math.random() * deck.length)
-      let $tmpLoc = deck[$loc1]
+    for(let i = 0; i < 500; i++){
+      let loc1 = Math.floor(Math.random() * deck.length)
+      let loc2 = Math.floor(Math.random() * deck.length)
+      let tmpLoc = deck[loc1]
 
-      deck[$loc1] = deck[$loc2]
-      deck[$loc2] = $tmpLoc
+      deck[loc1] = deck[loc2]
+      deck[loc2] = tmpLoc
     }
   }
 
