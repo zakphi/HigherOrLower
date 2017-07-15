@@ -46,10 +46,11 @@ $(function(){
       }
     })
 
-    $header.appendTo('body')
-    $title.appendTo($header)
     $gameCont.appendTo('body')
-    $input.appendTo('body')
+    $header.prependTo($gameCont)
+    $title.appendTo($header)
+    createStartScreen()
+    $input.appendTo($gameCont)
     $input.before('C:\\>')
   }
 
@@ -99,6 +100,8 @@ $(function(){
     $suitCont.addClass('suitCont')
 
     $gameScreen.appendTo('#container')
+    // $gameScreen.after($('header'))
+    $('header').after($gameScreen)
     $scoreKeeper.appendTo($gameScreen)
     if($highScore !== null && $highScore > 0){
       $highScoreKeeper.appendTo($gameScreen)
@@ -273,6 +276,7 @@ $(function(){
     $endGameInstructions.text('type \'replay\' to replay again.')
 
     $endGameScreen.appendTo('#container')
+    $('header').after($endGameScreen)
     $scoreKeeper.appendTo($endGameScreen)
     if($score > 0 && $score > $highScore){
       $highScoreKeeper.text(`High Score: ${$score}`)
@@ -301,5 +305,4 @@ $(function(){
   }
 
   createGame()
-  createStartScreen()
 })

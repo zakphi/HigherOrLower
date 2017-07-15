@@ -32,3 +32,9 @@ input:focus{
 body, input{
   cursor: none;
 }
+
+#container{
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 1%;
+}
