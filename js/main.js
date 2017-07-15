@@ -124,7 +124,8 @@ $(function(){
 
     createDeck()
     shuffleDeck()
-    showCard()
+    showCard1()
+    showCard2()
   }
 
   function createHelpScreen(){
@@ -171,20 +172,23 @@ $(function(){
     }
   }
 
-  function showCard(){
+  function showCard1(){
     let card1 = deck.shift()
-    let card2 = deck.shift()
 
     let card1Face = card1.faceVal
     let card1Suit = card1.suit
     card1NumVal = card1.numVal
 
+    $('#card1 .faceValCont').text(card1Face)
+    $('#card1 .suitCont').text(card1Suit)
+  }
+
+  function showCard2(){    
+    let card2 = deck.shift()
+
     let card2Face = card2.faceVal
     let card2Suit = card2.suit
     card2NumVal = card2.numVal
-
-    $('#card1 .faceValCont').text(card1Face)
-    $('#card1 .suitCont').text(card1Suit)
 
     $('#card2 .faceValCont').text(card2Face)
     $('#card2 .suitCont').text(card2Suit)
@@ -231,14 +235,7 @@ $(function(){
     $('#card1').html($('#card2').html())
     card1NumVal = card2NumVal
 
-    let card2 = deck.shift()
-    
-    let card2Face = card2.faceVal
-    let card2Suit = card2.suit
-    card2NumVal = card2.numVal
-
-    $('#card2 .faceValCont').text(card2Face)
-    $('#card2 .suitCont').text(card2Suit)
+    showCard2()
   }
 
   function createEndGameScreen(){
