@@ -12,8 +12,8 @@ $(function(){
   let score = 0
   let highScore = localStorage.getItem('high-score')
 
-  let $card1NumVal
-  let $card2NumVal
+  let card1NumVal
+  let card2NumVal
 
   function createGame(){
     let $gameCont = $('<section>')
@@ -100,7 +100,6 @@ $(function(){
     $suitCont.addClass('suitCont')
 
     $gameScreen.appendTo('#container')
-    // $gameScreen.after($('header'))
     $('header').after($gameScreen)
     $scoreKeeper.appendTo($gameScreen)
     if(highScore !== null && highScore > 0){
@@ -157,12 +156,12 @@ $(function(){
       u2666 = diamond
       u2663 = club
     */
-    let $suits = ['\u2660','\u2665','\u2666','\u2663']
-    let $faceValues = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-    $suits.forEach(function(suit){
-      $faceValues.forEach(function(faceVal, numVal){
-        let $card = new Card(suit, faceVal, numVal + 1)
-        deck.push($card)
+    let suits = ['\u2660','\u2665','\u2666','\u2663']
+    let faceValues = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+    suits.forEach(function(suit){
+      faceValues.forEach(function(faceVal, numVal){
+        let card = new Card(suit, faceVal, numVal + 1)
+        deck.push(card)
       })
     })
   }
@@ -181,30 +180,30 @@ $(function(){
 
   function showCard(){
     console.log('card displayed')
-    let $card1 = deck.shift()
-    let $card2 = deck.shift()
+    let card1 = deck.shift()
+    let card2 = deck.shift()
 
-    let $card1Face = $card1.faceVal
-    let $card1Suit = $card1.suit
-    $card1NumVal = $card1.numVal
+    let card1Face = card1.faceVal
+    let card1Suit = card1.suit
+    card1NumVal = card1.numVal
 
-    let $card2Face = $card2.faceVal
-    let $card2Suit = $card2.suit
-    $card2NumVal = $card2.numVal
+    let card2Face = card2.faceVal
+    let card2Suit = card2.suit
+    card2NumVal = card2.numVal
 
-    $('#card1 .faceValCont').text($card1Face)
-    $('#card1 .suitCont').text($card1Suit)
+    $('#card1 .faceValCont').text(card1Face)
+    $('#card1 .suitCont').text(card1Suit)
 
-    $('#card2 .faceValCont').text($card2Face)
-    $('#card2 .suitCont').text($card2Suit)
+    $('#card2 .faceValCont').text(card2Face)
+    $('#card2 .suitCont').text(card2Suit)
   }
 
   function higher(){
     console.log('higher')
-    if($card2NumVal > $card1NumVal){
+    if(card2NumVal > card1NumVal){
       updateScore()
       updateCards()
-    } else if($card2NumVal === $card1NumVal){
+    } else if(card2NumVal === card1NumVal){
       updateHighScore()
       createEndGameScreen()
     } else {
@@ -215,10 +214,10 @@ $(function(){
 
   function lower(){
     console.log('lower')
-    if($card2NumVal < $card1NumVal){
+    if(card2NumVal < card1NumVal){
       updateScore()
       updateCards()
-    } else if($card2NumVal === $card1NumVal){
+    } else if(card2NumVal === card1NumVal){
       updateHighScore()
       createEndGameScreen()
     } else {
@@ -243,16 +242,16 @@ $(function(){
   function updateCards(){
     console.log('cards updated')
     $('#card1').html($('#card2').html())
-    $card1NumVal = $card2NumVal
+    card1NumVal = card2NumVal
 
-    let $card2 = deck.shift()
+    let card2 = deck.shift()
     
-    let $card2Face = $card2.faceVal
-    let $card2Suit = $card2.suit
-    $card2NumVal = $card2.numVal
+    let card2Face = card2.faceVal
+    let card2Suit = card2.suit
+    card2NumVal = card2.numVal
 
-    $('#card2 .faceValCont').text($card2Face)
-    $('#card2 .suitCont').text($card2Suit)
+    $('#card2 .faceValCont').text(card2Face)
+    $('#card2 .suitCont').text(card2Suit)
   }
 
   function createEndGameScreen(){
