@@ -7,10 +7,10 @@ $(function(){
     this.numVal = numVal
   }
 
-  let $deck = []
+  let deck = []
 
-  let $score = 0
-  let $highScore = localStorage.getItem('high-score')
+  let score = 0
+  let highScore = localStorage.getItem('high-score')
 
   let $card1NumVal
   let $card2NumVal
@@ -80,11 +80,11 @@ $(function(){
     $gameScreen.attr('id','game-screen')
 
     let $scoreKeeper = $('<h2>')
-    $scoreKeeper.text(`Score: ${$score}`)
+    $scoreKeeper.text(`Score: ${score}`)
     $scoreKeeper.addClass('score')
 
     let $highScoreKeeper = $('<h2>')
-    $highScoreKeeper.text(`High Score: ${$highScore}`)
+    $highScoreKeeper.text(`High Score: ${highScore}`)
     $highScoreKeeper.addClass('high-score')
 
     let $card1Cont = $('<div>')
@@ -103,7 +103,7 @@ $(function(){
     // $gameScreen.after($('header'))
     $('header').after($gameScreen)
     $scoreKeeper.appendTo($gameScreen)
-    if($highScore !== null && $highScore > 0){
+    if(highScore !== null && highScore > 0){
       $highScoreKeeper.appendTo($gameScreen)
     }
     $card1Cont.appendTo($gameScreen)
@@ -162,7 +162,7 @@ $(function(){
     $suits.forEach(function(suit){
       $faceValues.forEach(function(faceVal, numVal){
         let $card = new Card(suit, faceVal, numVal + 1)
-        $deck.push($card)
+        deck.push($card)
       })
     })
   }
@@ -170,19 +170,19 @@ $(function(){
   function shuffleDeck(){
     console.log('deck shuffled')
     for(let $i = 0; $i < 500; $i++){
-      let $loc1 = Math.floor(Math.random() * $deck.length)
-      let $loc2 = Math.floor(Math.random() * $deck.length)
-      let $tmpLoc = $deck[$loc1]
+      let $loc1 = Math.floor(Math.random() * deck.length)
+      let $loc2 = Math.floor(Math.random() * deck.length)
+      let $tmpLoc = deck[$loc1]
 
-      $deck[$loc1] = $deck[$loc2]
-      $deck[$loc2] = $tmpLoc
+      deck[$loc1] = deck[$loc2]
+      deck[$loc2] = $tmpLoc
     }
   }
 
   function showCard(){
     console.log('card displayed')
-    let $card1 = $deck.shift()
-    let $card2 = $deck.shift()
+    let $card1 = deck.shift()
+    let $card2 = deck.shift()
 
     let $card1Face = $card1.faceVal
     let $card1Suit = $card1.suit
@@ -229,14 +229,14 @@ $(function(){
 
   function updateScore(){
     console.log('score updated')
-    $score++
-    $('.score').text(`Score: ${$score}`)
+    score++
+    $('.score').text(`Score: ${score}`)
   }
 
   function updateHighScore(){
     console.log('high score updated')
-    if($score > $highScore){
-      localStorage.setItem('high-score', $score)
+    if(score > highScore){
+      localStorage.setItem('high-score', score)
     }
   }
 
@@ -245,7 +245,7 @@ $(function(){
     $('#card1').html($('#card2').html())
     $card1NumVal = $card2NumVal
 
-    let $card2 = $deck.shift()
+    let $card2 = deck.shift()
     
     let $card2Face = $card2.faceVal
     let $card2Suit = $card2.suit
@@ -262,11 +262,11 @@ $(function(){
     $endGameScreen.attr('id','end-game-screen')
 
     let $scoreKeeper = $('<h2>')
-    $scoreKeeper.text(`Score: ${$score}`)
+    $scoreKeeper.text(`Score: ${score}`)
     $scoreKeeper.addClass('score')
 
     let $highScoreKeeper = $('<h2>')
-    $highScoreKeeper.text(`High Score: ${$highScore}`)
+    $highScoreKeeper.text(`High Score: ${highScore}`)
     $highScoreKeeper.addClass('high-score')
 
     let $result = $('<h2>')
@@ -278,10 +278,10 @@ $(function(){
     $endGameScreen.appendTo('#container')
     $('header').after($endGameScreen)
     $scoreKeeper.appendTo($endGameScreen)
-    if($score > 0 && $score > $highScore){
-      $highScoreKeeper.text(`High Score: ${$score}`)
-    } else if($score === 0 && $score < $highScore) {
-      $highScoreKeeper.text(`High Score: ${$highScore}`)
+    if(score > 0 && score > highScore){
+      $highScoreKeeper.text(`High Score: ${score}`)
+    } else if(score === 0 && score < highScore) {
+      $highScoreKeeper.text(`High Score: ${highScore}`)
     }
     $highScoreKeeper.appendTo($endGameScreen)
     $result.appendTo($endGameScreen)
@@ -299,8 +299,8 @@ $(function(){
 
   function replayGame(){
     $('#end-game-screen').remove()
-    $score = 0
-    $highScore = localStorage.getItem('high-score')
+    score = 0
+    highScore = localStorage.getItem('high-score')
     createGameScreen()
   }
 
