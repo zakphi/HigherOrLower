@@ -1,6 +1,4 @@
 $(function(){
-  console.log('main.js connected')
-  
   let Card = function(suit, faceVal, numVal){
     this.suit = suit
     this.faceVal = faceVal
@@ -71,8 +69,6 @@ $(function(){
   }
 
   function createGameScreen(){
-    console.log('game screen created')
-
     $('#start-screen').remove()
     $('#help-screen').remove()
 
@@ -132,8 +128,6 @@ $(function(){
   }
 
   function createHelpScreen(){
-    console.log('help screen created')
-
     let $helpScreen = $('<article>')
     $helpScreen.attr('id','help-screen')
 
@@ -150,7 +144,6 @@ $(function(){
   }
   
   function createDeck(){
-    console.log('deck created')
     /*
       u2660 = spade
       u2665 = heart
@@ -168,7 +161,6 @@ $(function(){
   }
 
   function shuffleDeck(){
-    console.log('deck shuffled')
     for(let i = 0; i < 500; i++){
       let loc1 = Math.floor(Math.random() * deck.length)
       let loc2 = Math.floor(Math.random() * deck.length)
@@ -180,7 +172,6 @@ $(function(){
   }
 
   function showCard(){
-    console.log('card displayed')
     let card1 = deck.shift()
     let card2 = deck.shift()
 
@@ -200,7 +191,6 @@ $(function(){
   }
 
   function higher(){
-    console.log('higher')
     if(card2NumVal > card1NumVal){
       updateScore()
       updateCards()
@@ -214,7 +204,6 @@ $(function(){
   }
 
   function lower(){
-    console.log('lower')
     if(card2NumVal < card1NumVal){
       updateScore()
       updateCards()
@@ -228,20 +217,17 @@ $(function(){
   }
 
   function updateScore(){
-    console.log('score updated')
     score++
     $('.score').text(`Score: ${score}`)
   }
 
   function updateHighScore(){
-    console.log('high score updated')
     if(score > highScore){
       localStorage.setItem('high-score', score)
     }
   }
 
   function updateCards(){
-    console.log('cards updated')
     $('#card1').html($('#card2').html())
     card1NumVal = card2NumVal
 
