@@ -29,7 +29,6 @@ $(function(){
     $input.prop('autofocus',true)
 
     $input.keyup(function(e){
-      console.log($input.val())
       if($('#container #start-screen').length === 1){
         if(e.keyCode === 13){
           if($input.val() === 'start'){
@@ -112,7 +111,6 @@ $(function(){
     $suitCont.clone().appendTo($card2Cont)
 
     $('input').keyup(function(e){
-      console.log($('input').val())
       if($('#container #game-screen').length === 1){
         if(e.keyCode === 13){
           if($('input').val() === 'higher'){
@@ -138,10 +136,10 @@ $(function(){
     $helpScreen.attr('id','help-screen')
 
     let $helpTitle = $('<h2>')
-    $helpTitle.text('How To Play')
+    $helpTitle.text('How To Play:')
 
     let $helpText = $('<p>')
-    $helpText.text('The player is displayed a card. The player then has to guess whether the next card is higher or lower than the displayed card. To guess, type \'higher\' for higher or \'lower\' for lower.')
+    $helpText.text('The player is displayed a card. The player has to guess whether the next card is higher or lower than the displayed card. To guess, type \'higher\' for higher or \'lower\' for lower.')
 
     $helpScreen.appendTo('#container')
     $helpTitle.appendTo($helpScreen)
@@ -286,7 +284,6 @@ $(function(){
     $endGameInstructions.appendTo($endGameScreen)
 
     $('input').keyup(function(e){
-      console.log($('input').val())
       if(e.keyCode === 13){
         if($('input').val() === 'replay'){
           replayGame()
@@ -299,6 +296,7 @@ $(function(){
   function replayGame(){
     $('#end-game-screen').remove()
     $score = 0
+    $highScore = localStorage.getItem('high-score')
     createGameScreen()
   }
 
