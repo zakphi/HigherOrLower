@@ -144,6 +144,7 @@ $(function(){
     $helpText.text('The player is displayed a card. The player has to guess whether the next card is higher or lower than the displayed card. To guess, type \'higher\' for higher or \'lower\' for lower.')
 
     $helpScreen.appendTo('#container')
+    $('#start-screen').after($helpScreen)
     $helpTitle.appendTo($helpScreen)
     $helpText.appendTo($helpScreen)
   }
