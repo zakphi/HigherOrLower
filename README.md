@@ -56,3 +56,5 @@ Making my game act like a DOS based game
 ## Opportunities for Future Growth
 
 I am satisfied with what I built. My code could possibly have been written better, but it's easy for me to read and understand what is going on.
+
+[link to game](https://zakphi.github.io/HigherOrLower/)
