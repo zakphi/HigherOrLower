@@ -14,42 +14,43 @@ $(function(){
   let card2NumVal
 
   function createGame(){
-    let $gameCont = $('<section>')
-    $gameCont.attr('id','container')
+    $('<section>', {
+      'id': 'container'
+    }).appendTo('body')
 
-    let $header = $('<header>')
+    $('<header>').appendTo('#container')
     
-    let $title = $('<h1>')
-    $title.text('Higher or Lower')
+    $('<h1>', {
+      'text': 'Higher or Lower'
+    }).appendTo('header')
 
-    let $input = $('<input>')
-    $input.attr('type','text')
-    $input.prop('autofocus',true)
+    createStartScreen()
 
-    $input.keyup(function(e){
+    $('<input>', {
+      'type': 'text',
+      'autofocus': true,
+      'before': 'C:\\>'
+    }).appendTo('#container')
+
+    $('input').keyup(function(e){
       if($('#container #start-screen').length === 1){
         if(e.keyCode === 13){
-          if($input.val() === 'start'){
+          if($('input').val() === 'start'){
             if($('#container #game-screen').length === 0){
               createGameScreen()
             }
           }
-          if($input.val() === 'help'){
+          if($('input').val() === 'help'){
             if($('#container #help-screen').length === 0){
               createHelpScreen()
             }
           }
-          $input.val('')
+          $('input').val('')
         }
       }
     })
 
-    $gameCont.appendTo('body')
-    $header.prependTo($gameCont)
-    $title.appendTo($header)
-    createStartScreen()
-    $input.appendTo($gameCont)
-    $input.before('C:\\>')
+    $('input').before('C:\\>')
   }
 
   function createStartScreen(){
