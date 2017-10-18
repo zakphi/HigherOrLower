@@ -71,41 +71,44 @@ $(function(){
     $('#start-screen').remove()
     $('#help-screen').remove()
 
-    let $gameScreen = $('<article>')
-    $gameScreen.attr('id','game-screen')
+    $('<article>', {
+      'id': 'game-screen'
+    }).appendTo('#container')
 
-    let $scoreKeeper = $('<h2>')
-    $scoreKeeper.text(`Score: ${score}`)
-    $scoreKeeper.addClass('score')
+    $('<h2>', {
+      'class': 'score',
+      'text': `Score: ${score}`
+    }).appendTo('#game-screen')
 
-    let $highScoreKeeper = $('<h2>')
-    $highScoreKeeper.text(`High Score: ${highScore}`)
-    $highScoreKeeper.addClass('high-score')
+    $('<h2>', {
+      'class': 'high-score',
+      'text': `High Score: ${highScore}`
+    }).appendTo('#game-screen')
 
-    let $card1Cont = $('<div>')
-    $card1Cont.attr('id','card1')
+    $('<div>', {
+      'id': 'card1'
+    }).appendTo('#game-screen')
 
-    let $card2Cont = $('<div>')
-    $card2Cont.attr('id','card2')
+    $('<div>', {
+      'id': 'card2'
+    }).appendTo('#game-screen')
 
-    let $faceValCont = $('<div>')
-    $faceValCont.addClass('faceValCont')
+    $('header').after($('#game-screen'))
 
-    let $suitCont = $('<div>')
-    $suitCont.addClass('suitCont')
-
-    $gameScreen.appendTo('#container')
-    $('header').after($gameScreen)
-    $scoreKeeper.appendTo($gameScreen)
     if(highScore !== null && highScore > 0){
-      $highScoreKeeper.appendTo($gameScreen)
+      $('.score').after($('.high-score'))
     }
-    $card1Cont.appendTo($gameScreen)
-    $card2Cont.appendTo($gameScreen)
-    $faceValCont.appendTo($card1Cont)
-    $suitCont.appendTo($card1Cont)
-    $faceValCont.clone().appendTo($card2Cont)
-    $suitCont.clone().appendTo($card2Cont)
+
+    $('<div>', {
+      'class': 'faceValCont'
+    }).appendTo('#card1')
+
+    $('<div>', {
+      'class': 'suitCont'
+    }).appendTo('#card1')
+
+    $('.faceValCont').clone().appendTo('#card2')
+    $('.suitCont').clone().appendTo('#card2')
 
     $('input').keyup(function(e){
       if($('#container #game-screen').length === 1){
