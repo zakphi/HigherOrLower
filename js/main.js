@@ -54,19 +54,17 @@ $(function(){
   }
 
   function createStartScreen(){
-    let $startScreen = $('<article>')
-    $startScreen.attr('id','start-screen')
-    
-    $startScreen.appendTo('#container')
+    $('<article>', {
+      'id': 'start-screen'
+    }).appendTo('#container')
 
-    let $startText = $('<p>')
-    $startText.text('Type \'start\' to play the game')
+    $('<p>', {
+      'text': 'Type \'start\' to play the game'
+    }).appendTo('#start-screen')
 
-    let $helpText = $('<p>')
-    $helpText.text('Type \'help\' to display instructions')
-
-    $startText.appendTo($startScreen)
-    $helpText.appendTo($startScreen)
+    $('<p>', {
+      'text': 'Type \'help\' to display instructions'
+    }).appendTo('#start-screen')
   }
 
   function createGameScreen(){
