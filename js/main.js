@@ -80,11 +80,6 @@ $(function(){
       'text': `Score: ${score}`
     }).appendTo('#game-screen')
 
-    $('<h2>', {
-      'class': 'high-score',
-      'text': `High Score: ${highScore}`
-    }).appendTo('#game-screen')
-
     $('<div>', {
       'id': 'card1'
     }).appendTo('#game-screen')
@@ -96,6 +91,11 @@ $(function(){
     $('header').after($('#game-screen'))
 
     if(highScore !== null && highScore > 0){
+      $('<h2>', {
+        'class': 'high-score',
+        'text': `High Score: ${highScore}`
+      }).appendTo('#game-screen')
+
       $('.score').after($('.high-score'))
     }
 
