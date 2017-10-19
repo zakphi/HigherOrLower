@@ -13,6 +13,8 @@ $(function(){
   let card1NumVal
   let card2NumVal
 
+  let prevInputs = []
+
   function createGame(){
     $('<section>', {
       'id': 'container'
@@ -109,27 +111,30 @@ $(function(){
     $('.faceValCont').clone().appendTo('#card2')
     $('.suitCont').clone().appendTo('#card2')
 
-    let prevInput = ''
+    let inc = 1
     $('input').keyup(function(e){
       if($('#container #game-screen').length === 1){
         if(e.keyCode === 13){
           if($('input').val() === 'higher'){
-            prevInput = 'higher'
+            prevInputs.push('higher')
             higher()
           }
           if($('input').val() === 'lower'){
-            prevInput = 'lower'
+            prevInputs.push('lower')
             lower()
           }
           $('input').val('')
+          inc = 1
         }
       }
     })
 
     $('input').keydown(function(e){
       if($('#container #game-screen').length === 1){
-        if(e.keyCode === 38 && prevInput != ''){
-          $('input').val(prevInput)
+        if(e.keyCode === 38 && prevInputs.length != 0){
+          let prevInput = prevInputs.length - inc
+          $('input').val(prevInputs[prevInput])
+          inc++
         }
       }
     })
@@ -296,6 +301,7 @@ $(function(){
   function replayGame(){
     $('#end-game-screen').remove()
     score = 0
+    prevInputs = []
     highScore = localStorage.getItem('high-score')
     createGameScreen()
   }
