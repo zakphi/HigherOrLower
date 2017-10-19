@@ -29,7 +29,6 @@ $(function(){
     $('<input>', {
       'type': 'text',
       'autofocus': true,
-      'before': 'C:\\>'
     }).appendTo('#container')
 
     $('input').keyup(function(e){
