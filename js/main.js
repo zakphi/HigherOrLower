@@ -243,34 +243,34 @@ $(function(){
   function createEndGameScreen(){
     $('#game-screen').remove()
 
-    let $endGameScreen = $('<article>')
-    $endGameScreen.attr('id','end-game-screen')
+    $('<article>', {
+      'id': 'end-game-screen'
+    }).appendTo('#container')
 
-    let $scoreKeeper = $('<h2>')
-    $scoreKeeper.text(`Score: ${score}`)
-    $scoreKeeper.addClass('score')
+    $('<h2>', {
+      'class': 'score',
+      'text': `Score: ${score}`
+    }).appendTo('#end-game-screen')
 
-    let $highScoreKeeper = $('<h2>')
-    $highScoreKeeper.text(`High Score: ${highScore}`)
-    $highScoreKeeper.addClass('high-score')
+    $('<h2>', {
+      'class': 'high-score',
+      'text': `High Score: ${highScore}`
+    }).appendTo('#end-game-screen')
 
-    let $result = $('<h2>')
-    $result.text('you guessed wrong!')
+    $('<h2>', {
+      'text': 'you guessed wrong!'
+    }).appendTo('#end-game-screen')
 
-    let $endGameInstructions = $('<p>')
-    $endGameInstructions.text('type \'replay\' to replay again.')
+    $('<p>', {
+      'text': 'type \'replay\' to replay again.'
+    }).appendTo('#end-game-screen')
 
-    $endGameScreen.appendTo('#container')
-    $('header').after($endGameScreen)
-    $scoreKeeper.appendTo($endGameScreen)
+    $($('#end-game-screen')).insertAfter('header')
     if(score > 0 && score > highScore){
-      $highScoreKeeper.text(`High Score: ${score}`)
+      $('high-score').text(`High Score: ${score}`)
     } else if(score === 0 && score < highScore) {
-      $highScoreKeeper.text(`High Score: ${highScore}`)
+      $('high-score').text(`High Score: ${highScore}`)
     }
-    $highScoreKeeper.appendTo($endGameScreen)
-    $result.appendTo($endGameScreen)
-    $endGameInstructions.appendTo($endGameScreen)
 
     $('input').keyup(function(e){
       if(e.keyCode === 13){
