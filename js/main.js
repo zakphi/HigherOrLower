@@ -266,10 +266,11 @@ $(function(){
     }).appendTo('#end-game-screen')
 
     $($('#end-game-screen')).insertAfter('header')
+
     if(score > 0 && score > highScore){
-      $('high-score').text(`High Score: ${score}`)
+      $('.high-score').text(`High Score: ${score}`)
     } else if(score === 0 && score < highScore) {
-      $('high-score').text(`High Score: ${highScore}`)
+      $('.high-score').text(`High Score: ${highScore}`)
     }
 
     $('input').keyup(function(e){
