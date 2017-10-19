@@ -87,7 +87,7 @@ $(function(){
       'id': 'card2'
     }).appendTo('#game-screen')
 
-    $('header').after($('#game-screen'))
+    $('#game-screen').insertAfter($('header'))
 
     if(highScore !== null && highScore > 0){
       $('<h2>', {
@@ -95,7 +95,7 @@ $(function(){
         'text': `High Score: ${highScore}`
       }).appendTo('#game-screen')
 
-      $('.score').after($('.high-score'))
+      $('.high-score').insertAfter($('.score'))
     }
 
     $('<div>', {
