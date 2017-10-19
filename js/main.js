@@ -109,16 +109,27 @@ $(function(){
     $('.faceValCont').clone().appendTo('#card2')
     $('.suitCont').clone().appendTo('#card2')
 
+    let prevInput = ''
     $('input').keyup(function(e){
       if($('#container #game-screen').length === 1){
         if(e.keyCode === 13){
           if($('input').val() === 'higher'){
+            prevInput = 'higher'
             higher()
           }
           if($('input').val() === 'lower'){
+            prevInput = 'lower'
             lower()
           }
           $('input').val('')
+        }
+      }
+    })
+
+    $('input').keydown(function(e){
+      if($('#container #game-screen').length === 1){
+        if(e.keyCode === 38 && prevInput != ''){
+          $('input').val(prevInput)
         }
       }
     })
