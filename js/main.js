@@ -131,19 +131,19 @@ $(function(){
   }
 
   function createHelpScreen(){
-    let $helpScreen = $('<article>')
-    $helpScreen.attr('id','help-screen')
+    $('<article>', {
+      'id': 'help-screen'
+    }).appendTo('#container')
 
-    let $helpTitle = $('<h2>')
-    $helpTitle.text('How To Play:')
+    $('<h2>', {
+      'text': 'How To Play:'
+    }).appendTo('#help-screen')
 
-    let $helpText = $('<p>')
-    $helpText.text('The player is displayed a card. The player has to guess whether the next card is higher or lower than the displayed card. To guess, type \'higher\' for higher or \'lower\' for lower.')
+    $('<p>', {
+      'text': 'The player is displayed a card. The player has to guess whether the next card is higher or lower than the displayed card. To guess, type \'higher\' for higher or \'lower\' for lower.'
+    }).appendTo('#help-screen')
 
-    $helpScreen.appendTo('#container')
-    $('#start-screen').after($helpScreen)
-    $helpTitle.appendTo($helpScreen)
-    $helpText.appendTo($helpScreen)
+    $($('#help-screen')).insertAfter('#start-screen')
   }
   
   function createDeck(){
