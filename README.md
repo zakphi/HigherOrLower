@@ -1,6 +1,6 @@
 # Higher or Lower
 
-[link to game](https://zakphi.github.io/HigherOrLower/)
+[link to game](http://higherorlower.surge.sh/)
 
 ![start screen](images/startscreen.png)
 ![help screen](images/helptextdisplayed.png)
