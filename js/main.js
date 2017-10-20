@@ -36,12 +36,12 @@ $(function(){
     $('input').keyup(function(e){
       if($('#container #start-screen').length === 1){
         if(e.keyCode === 13){
-          if($('input').val() === 'start'){
+          if($('input').val().toLowerCase() === 'start'){
             if($('#container #game-screen').length === 0){
               createGameScreen()
             }
           }
-          if($('input').val() === 'help'){
+          if($('input').val().toLowerCase() === 'help'){
             if($('#container #help-screen').length === 0){
               createHelpScreen()
             }
@@ -115,11 +115,11 @@ $(function(){
     $('input').keyup(function(e){
       if($('#container #game-screen').length === 1){
         if(e.keyCode === 13){
-          if($('input').val() === 'higher'){
+          if($('input').val().toLowerCase() === 'higher'){
             prevInputs.push('higher')
             higher()
           }
-          if($('input').val() === 'lower'){
+          if($('input').val().toLowerCase() === 'lower'){
             prevInputs.push('lower')
             lower()
           }
@@ -293,7 +293,7 @@ $(function(){
 
     $('input').keyup(function(e){
       if(e.keyCode === 13){
-        if($('input').val() === 'replay'){
+        if($('input').val().toLowerCase() === 'replay'){
           replayGame()
           $('input').val('')
         }
