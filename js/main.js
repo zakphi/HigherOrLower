@@ -111,7 +111,7 @@ $(function(){
     $('.faceValCont').clone().appendTo('#card2')
     $('.suitCont').clone().appendTo('#card2')
 
-    let inc = 1
+    let inputHistory = 0
     $('input').keyup(function(e){
       if($('#container #game-screen').length === 1){
         if(e.keyCode === 13){
@@ -124,17 +124,20 @@ $(function(){
             lower()
           }
           $('input').val('')
-          inc = 1
+          inputHistory = prevInputs.length
         }
       }
     })
 
     $('input').keydown(function(e){
       if($('#container #game-screen').length === 1){
-        if(e.keyCode === 38 && prevInputs.length != 0){
-          let prevInput = prevInputs.length - inc
-          $('input').val(prevInputs[prevInput])
-          inc++
+        if(e.keyCode === 38 && prevInputs.length > 0 && inputHistory > 0){
+          inputHistory--
+          $('input').val(prevInputs[inputHistory])
+        }
+        if(e.keyCode === 40 && prevInputs.length > 0 && inputHistory < prevInputs.length){
+          inputHistory++
+          $('input').val(prevInputs[inputHistory])
         }
       }
     })
