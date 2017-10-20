@@ -246,7 +246,7 @@ $(function(){
   }
 
   function updateHighScore(){
-    if(score > highScore){
+    if(score > highScore || highScore == null){
       localStorage.setItem('high-score', score)
     }
   }
@@ -272,7 +272,6 @@ $(function(){
 
     $('<h2>', {
       'class': 'high-score',
-      'text': `High Score: ${highScore}`
     }).appendTo('#end-game-screen')
 
     $('<h2>', {
@@ -285,11 +284,9 @@ $(function(){
 
     $($('#end-game-screen')).insertAfter('header')
 
-    if(score > 0 && score > highScore){
-      $('.high-score').text(`High Score: ${score}`)
-    } else if(score === 0 && score < highScore) {
-      $('.high-score').text(`High Score: ${highScore}`)
-    }
+    let scoreText = score > highScore ? `High Score: ${score}` : `High Score: ${highScore}`
+
+    $('.high-score').text(highScore > 0 || highScore != null ? scoreText : '')
 
     $('input').keyup(function(e){
       if(e.keyCode === 13){
