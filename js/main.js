@@ -117,11 +117,11 @@ $(function(){
         if(e.keyCode === 13){
           if($('input').val().toLowerCase() === 'higher'){
             prevInputs.push('higher')
-            higher()
+            compare('higher')
           }
           if($('input').val().toLowerCase() === 'lower'){
             prevInputs.push('lower')
-            lower()
+            compare('lower')
           }
           $('input').val('')
           inputHistory = prevInputs.length
@@ -203,7 +203,7 @@ $(function(){
     $('#card1 .suitCont').text(card1Suit)
   }
 
-  function showCard2(){    
+  function showCard2(){
     let card2 = deck.shift()
 
     let card2Face = card2.faceVal
@@ -214,26 +214,10 @@ $(function(){
     $('#card2 .suitCont').text(card2Suit)
   }
 
-  function higher(){
-    if(card2NumVal > card1NumVal){
+  function compare(guess){
+    if((guess = 'higher' && card2NumVal > card1NumVal) || (guess = 'lower' && card2NumVal < card1NumVal)){
       updateScore()
       updateCards()
-    } else if(card2NumVal === card1NumVal){
-      updateHighScore()
-      createEndGameScreen()
-    } else {
-      updateHighScore()
-      createEndGameScreen()
-    }
-  }
-
-  function lower(){
-    if(card2NumVal < card1NumVal){
-      updateScore()
-      updateCards()
-    } else if(card2NumVal === card1NumVal){
-      updateHighScore()
-      createEndGameScreen()
     } else {
       updateHighScore()
       createEndGameScreen()
