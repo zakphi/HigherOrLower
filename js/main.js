@@ -186,7 +186,7 @@ $(function(){
     let randIndex
 
     for(let i = 0; i < deckSize; i++){
-      randIndex = Math.floor(Math.random * deck.length)
+      randIndex = Math.floor(Math.random() * deck.length)
       shuffledDeck.push(deck.splice(randIndex, 1)[0])
     }
 
