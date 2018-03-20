@@ -143,9 +143,6 @@ $(function(){
     })
 
     createDeck()
-    shuffleDeck()
-    showCard1()
-    showCard2()
   }
 
   function createHelpScreen(){
@@ -179,6 +176,8 @@ $(function(){
         deck.push(card)
       })
     })
+
+    shuffleDeck()
   }
 
   function shuffleDeck(){
@@ -192,6 +191,9 @@ $(function(){
     }
 
     deck = shuffledDeck
+
+    showCard1()
+    showCard2()
   }
 
   function showCard1(){
