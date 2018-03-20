@@ -182,14 +182,16 @@ $(function(){
   }
 
   function shuffleDeck(){
-    for(let i = 0; i < 500; i++){
-      let loc1 = Math.floor(Math.random() * deck.length)
-      let loc2 = Math.floor(Math.random() * deck.length)
-      let tmpLoc = deck[loc1]
+    let deckSize = deck.length
+    let shuffledDeck = []
+    let randIndex
 
-      deck[loc1] = deck[loc2]
-      deck[loc2] = tmpLoc
+    for(let i = 0; i < deckSize; i++){
+      randIndex = Math.floor(Math.random * deck.length)
+      shuffledDeck.push(deck.splice(randIndex, 1)[0])
     }
+
+    deck = shuffledDeck
   }
 
   function showCard1(){
