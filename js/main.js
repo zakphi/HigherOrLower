@@ -8,7 +8,7 @@ $(function(){
   let deck = []
 
   let score = 0
-  let highScore = localStorage.getItem('high-score')
+  let highScore = localStorage.getItem('high-score') || 0
 
   let card1
   let card2
@@ -76,21 +76,17 @@ $(function(){
       'id': 'game-screen'
     }).appendTo('#container')
 
+    $('#game-screen').insertAfter($('header'))
+
     $('<h2>', {
       'class': 'score',
       'text': `Score: ${score}`
     }).appendTo('#game-screen')
 
-    $('#game-screen').insertAfter($('header'))
-
-    if(highScore !== null && highScore > 0){
-      $('<h2>', {
-        'class': 'high-score',
-        'text': `High Score: ${highScore}`
-      }).appendTo('#game-screen')
-
-      $('.high-score').insertAfter($('.score'))
-    }
+    $('<h2>', {
+      'class': 'high-score',
+      'text': `High Score: ${highScore}`
+    }).appendTo('#game-screen')
 
     $('<div>', {
       'id': 'card'
@@ -200,7 +196,6 @@ $(function(){
       updateScore()
       updateCards()
     } else {
-      updateHighScore()
       createEndGameScreen()
     }
   }
@@ -208,11 +203,11 @@ $(function(){
   function updateScore(){
     score++
     $('.score').text(`Score: ${score}`)
-  }
 
-  function updateHighScore(){
     if(score > highScore || highScore == null){
-      localStorage.setItem('high-score', score)
+      highScore = score
+      $('.high-score').text(`High Score: ${highScore}`)
+      localStorage.setItem('high-score', highScore)
     }
   }
 
@@ -237,6 +232,7 @@ $(function(){
 
     $('<h2>', {
       'class': 'high-score',
+      'text': `High Score: ${highScore}`
     }).appendTo('#end-game-screen')
 
     $('<h2>', {
@@ -248,10 +244,6 @@ $(function(){
     }).appendTo('#end-game-screen')
 
     $($('#end-game-screen')).insertAfter('header')
-
-    let scoreText = score > highScore ? `High Score: ${score}` : `High Score: ${highScore}`
-
-    $('.high-score').text(highScore > 0 || highScore != null ? scoreText : '')
 
     $('input').keyup(function(e){
       if(e.keyCode === 13){
@@ -267,7 +259,7 @@ $(function(){
     $('#end-game-screen').remove()
     score = 0
     prevInputs = []
-    highScore = localStorage.getItem('high-score')
+    highScore = localStorage.getItem('high-score') || 0
     createGameScreen()
   }
 
