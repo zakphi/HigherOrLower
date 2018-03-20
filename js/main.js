@@ -196,7 +196,7 @@ $(function(){
   }
 
   function compare(guess){
-    if((guess = 'higher' && card2.numVal > card1.numVal) || (guess = 'lower' && card2.numVal < card1.numVal)){
+    if((guess === 'higher' && card2.numVal > card1.numVal) || (guess === 'lower' && card2.numVal < card1.numVal)){
       updateScore()
       updateCards()
     } else {
