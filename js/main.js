@@ -10,8 +10,8 @@ $(function(){
   let score = 0
   let highScore = localStorage.getItem('high-score')
 
-  let card1NumVal
-  let card2NumVal
+  let card1
+  let card2
 
   let prevInputs = []
 
@@ -81,14 +81,6 @@ $(function(){
       'text': `Score: ${score}`
     }).appendTo('#game-screen')
 
-    $('<div>', {
-      'id': 'card1'
-    }).appendTo('#game-screen')
-
-    $('<div>', {
-      'id': 'card2'
-    }).appendTo('#game-screen')
-
     $('#game-screen').insertAfter($('header'))
 
     if(highScore !== null && highScore > 0){
@@ -101,15 +93,16 @@ $(function(){
     }
 
     $('<div>', {
+      'id': 'card'
+    }).appendTo('#game-screen')
+
+    $('<div>', {
       'class': 'faceValCont'
-    }).appendTo('#card1')
+    }).appendTo('#card')
 
     $('<div>', {
       'class': 'suitCont'
-    }).appendTo('#card1')
-
-    $('.faceValCont').clone().appendTo('#card2')
-    $('.suitCont').clone().appendTo('#card2')
+    }).appendTo('#card')
 
     let inputHistory = 0
     $('input').keyup(function(e){
@@ -192,34 +185,18 @@ $(function(){
 
     deck = shuffledDeck
 
-    showCard1()
-    showCard2()
+    card1 = deck.shift()
+    card2 = deck.shift()
+    renderCard(card1)
   }
 
-  function showCard1(){
-    let card1 = deck.shift()
-
-    let card1Face = card1.faceVal
-    let card1Suit = card1.suit
-    card1NumVal = card1.numVal
-
-    $('#card1 .faceValCont').text(card1Face)
-    $('#card1 .suitCont').text(card1Suit)
-  }
-
-  function showCard2(){
-    let card2 = deck.shift()
-
-    let card2Face = card2.faceVal
-    let card2Suit = card2.suit
-    card2NumVal = card2.numVal
-
-    $('#card2 .faceValCont').text(card2Face)
-    $('#card2 .suitCont').text(card2Suit)
+  function renderCard(card){
+    $('#card .faceValCont').text(card.faceVal)
+    $('#card .suitCont').text(card.suit)
   }
 
   function compare(guess){
-    if((guess = 'higher' && card2NumVal > card1NumVal) || (guess = 'lower' && card2NumVal < card1NumVal)){
+    if((guess = 'higher' && card2.numVal > card1.numVal) || (guess = 'lower' && card2.numVal < card1.numVal)){
       updateScore()
       updateCards()
     } else {
@@ -240,10 +217,10 @@ $(function(){
   }
 
   function updateCards(){
-    $('#card1').html($('#card2').html())
-    card1NumVal = card2NumVal
+    card1 = card2
+    card2 = deck.shift()
 
-    showCard2()
+    renderCard(card1)
   }
 
   function createEndGameScreen(){
