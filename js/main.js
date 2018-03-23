@@ -78,9 +78,9 @@ $(function(){
 
     $('<div>').attr('id', 'card').appendTo('#game-screen')
 
-    $('<div>').attr('class', 'faceValCont').appendTo('#card')
+    $('<div>').attr('class', 'face-val').appendTo('#card')
 
-    $('<div>').attr('class', 'suitCont').appendTo('#card')
+    $('<div>').attr('class', 'suit').appendTo('#card')
 
     let inputHistory
 
@@ -165,8 +165,8 @@ $(function(){
   }
 
   function renderCard(card){
-    $('#card .faceValCont').text(card.faceVal)
-    $('#card .suitCont').text(card.suit)
+    $('#card .face-val').text(card.faceVal)
+    $('#card .suit').text(card.suit)
   }
 
   function compare(guess){
