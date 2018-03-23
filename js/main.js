@@ -16,15 +16,11 @@ $(function(){
   let prevInputs = []
 
   function createGame(){
-    $('<section>', {
-      'id': 'container'
-    }).appendTo('body')
+    $('<section>').attr('id', 'container').appendTo('body')
 
     $('<header>').appendTo('#container')
-    
-    $('<h1>', {
-      'text': 'Higher or Lower'
-    }).appendTo('header')
+
+    $('<h1>').text('Higher or Lower').appendTo('header')
 
     createStartScreen()
 
@@ -55,26 +51,18 @@ $(function(){
   }
 
   function createStartScreen(){
-    $('<article>', {
-      'id': 'start-screen'
-    }).appendTo('#container')
+    $('<article>').attr('id', 'start-screen').appendTo('#container')
 
-    $('<p>', {
-      'text': 'Type \'start\' to play the game'
-    }).appendTo('#start-screen')
+    $('<p>').text('Type \'start\' to play the game').appendTo('#start-screen')
 
-    $('<p>', {
-      'text': 'Type \'help\' to display instructions'
-    }).appendTo('#start-screen')
+    $('<p>').text('Type \'help\' to display instructions').appendTo('#start-screen')
   }
 
   function createGameScreen(){
     $('#start-screen').remove()
     $('#help-screen').remove()
 
-    $('<article>', {
-      'id': 'game-screen'
-    }).appendTo('#container')
+    $('<article>').attr('id', 'game-screen').appendTo('#container')
 
     $('#game-screen').insertAfter($('header'))
 
@@ -88,19 +76,14 @@ $(function(){
       'text': `High Score: ${highScore}`
     }).appendTo('#game-screen')
 
-    $('<div>', {
-      'id': 'card'
-    }).appendTo('#game-screen')
+    $('<div>').attr('id', 'card').appendTo('#game-screen')
 
-    $('<div>', {
-      'class': 'faceValCont'
-    }).appendTo('#card')
+    $('<div>').attr('class', 'faceValCont').appendTo('#card')
 
-    $('<div>', {
-      'class': 'suitCont'
-    }).appendTo('#card')
+    $('<div>').attr('class', 'suitCont').appendTo('#card')
 
-    let inputHistory = 0
+    let inputHistory
+
     $('input').keyup(function(e){
       if($('#container #game-screen').length === 1){
         if(e.keyCode === 13){
@@ -135,17 +118,11 @@ $(function(){
   }
 
   function createHelpScreen(){
-    $('<article>', {
-      'id': 'help-screen'
-    }).appendTo('#container')
+    $('<article>').attr('id', 'help-screen').appendTo('#container')
 
-    $('<h2>', {
-      'text': 'How To Play:'
-    }).appendTo('#help-screen')
+    $('<h2>').text('How To Play:').appendTo('#help-screen')
 
-    $('<p>', {
-      'text': 'The player is displayed a card. The player has to guess whether the next card is higher or lower than the displayed card. To guess, type \'higher\' for higher or \'lower\' for lower.'
-    }).appendTo('#help-screen')
+    $('<p>').text('The player is displayed a card. The player has to guess whether the next card is higher or lower than the displayed card. To guess, type \'higher\' for higher or \'lower\' for lower.').appendTo('#help-screen')
 
     $($('#help-screen')).insertAfter('#start-screen')
   }
@@ -183,6 +160,7 @@ $(function(){
 
     card1 = deck.shift()
     card2 = deck.shift()
+
     renderCard(card1)
   }
 
@@ -221,9 +199,7 @@ $(function(){
   function createEndGameScreen(){
     $('#game-screen').remove()
 
-    $('<article>', {
-      'id': 'end-game-screen'
-    }).appendTo('#container')
+    $('<article>').attr('id', 'end-game-screen').appendTo('#container')
 
     $('<h2>', {
       'class': 'score',
@@ -235,13 +211,9 @@ $(function(){
       'text': `High Score: ${highScore}`
     }).appendTo('#end-game-screen')
 
-    $('<h2>', {
-      'text': 'you guessed wrong!'
-    }).appendTo('#end-game-screen')
+    $('<h2>').text('you guessed wrong!').appendTo('#end-game-screen')
 
-    $('<p>', {
-      'text': 'type \'replay\' to replay again.'
-    }).appendTo('#end-game-screen')
+    $('<p>').text('type \'replay\' to replay again.').appendTo('#end-game-screen')
 
     $($('#end-game-screen')).insertAfter('header')
 
