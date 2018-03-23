@@ -204,7 +204,7 @@ $(function(){
     score++
     $('.score').text(`Score: ${score}`)
 
-    if(score > highScore || highScore == null){
+    if(score > highScore){
       highScore = score
       $('.high-score').text(`High Score: ${highScore}`)
       localStorage.setItem('high-score', highScore)
